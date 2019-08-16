@@ -2,6 +2,7 @@ package com.atguigu.ss
 
 import java.sql.Timestamp
 
+import org.apache.spark.sql.streaming.Trigger
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**
@@ -13,14 +14,14 @@ object StreamStream1 {
         val spark: SparkSession = SparkSession
             .builder()
             .master("local[*]")
-            .appName("Test")
+            .appName("StreamStream1")
             .getOrCreate()
         import spark.implicits._
         
         // 第 1 个 stream
         val nameSexStream: DataFrame = spark.readStream
             .format("socket")
-            .option("host", "localhost")
+            .option("host", "hadoop201")
             .option("port", 10000)
             .load
             .as[String]
@@ -30,10 +31,10 @@ object StreamStream1 {
             }).toDF("name", "sex", "ts1")
         
         // 第 2 个 stream
-        val nameAgeStream = spark.readStream
+        val nameAgeStream: DataFrame = spark.readStream
             .format("socket")
-            .option("host", "localhost")
-            .option("port", 10000)
+            .option("host", "hadoop201")
+            .option("port", 20000)
             .load
             .as[String]
             .map(line => {
@@ -48,8 +49,8 @@ object StreamStream1 {
         joinResult.writeStream
             .outputMode("append")
             .format("console")
+            .trigger(Trigger.ProcessingTime(0))
             .start()
             .awaitTermination()
-        
     }
 }

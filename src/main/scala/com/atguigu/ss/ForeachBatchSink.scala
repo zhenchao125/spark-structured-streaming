@@ -2,6 +2,7 @@ package com.atguigu.ss
 
 import java.util.Properties
 
+import org.apache.spark.sql.streaming.StreamingQuery
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**
@@ -19,7 +20,7 @@ object ForeachBatchSink {
         
         val lines: DataFrame = spark.readStream
             .format("socket") // 设置数据源
-            .option("host", "localhost")
+            .option("host", "hadoop201")
             .option("port", 10000)
             .load
         
@@ -31,11 +32,9 @@ object ForeachBatchSink {
         val props = new Properties()
         props.setProperty("user", "root")
         props.setProperty("password", "aaa")
-        
-        
-        val query = wordCount.writeStream
-            .outputMode("update")
-            .foreachBatch((df, batchId) => {
+        val query: StreamingQuery = wordCount.writeStream
+            .outputMode("complete")
+            .foreachBatch((df, batchId) => {  // 当前分区id, 当前批次id
                 if (df.count() != 0) {
                     df.cache()
                     df.write.json(s"./$batchId")
