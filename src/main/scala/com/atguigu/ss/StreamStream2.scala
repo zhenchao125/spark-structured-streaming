@@ -53,7 +53,8 @@ object StreamStream2 {
                   |name1=name2 and
                   |ts2 >= ts1 and
                   |ts2 <= ts1 + interval 1 minutes
-                """.stripMargin))
+                """.stripMargin),
+            joinType = "left_outer")
         
         joinResult.writeStream
             .outputMode("append")
