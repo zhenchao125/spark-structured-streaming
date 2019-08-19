@@ -11,5 +11,20 @@
 
     <artifactId>spark-realtime</artifactId>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
+        <!--阿里巴巴出品的数据库连接池. druid 是目前最好的数据库连接池
+        &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid &ndash;&gt;
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
+        </dependency>-->
+    </dependencies>
 </project>

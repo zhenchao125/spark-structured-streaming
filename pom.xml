@@ -6,7 +6,7 @@
 
     <groupId>com.atguigu</groupId>
     <artifactId>spark-structured-streaming</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spark-realtime</module>
