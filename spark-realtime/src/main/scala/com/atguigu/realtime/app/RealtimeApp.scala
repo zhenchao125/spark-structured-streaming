@@ -19,9 +19,9 @@ object RealtimeApp {
         // 需求1: 黑名单
         val filteredAdsInfoDS: Dataset[AdsInfo] = BlackListApp.statBlackList(spark)
         // 需求2:
-        AdsClickCountApp.statAdsClickCount(spark, filteredAdsInfoDS)
+//        AdsClickCountApp.statAdsClickCount(spark, filteredAdsInfoDS)
         // 需求3:
-        AdsClickCountTopApp.statAdsClickCountTop3(spark)
+//        AdsClickCountTopApp.statAdsClickCountTop3(spark)
         
         // 需求4:
         

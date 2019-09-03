@@ -31,7 +31,5 @@ object AdsClickCountTopApp {
             .outputMode("update")
             .start
             .awaitTermination
-        
-        
     }
 }

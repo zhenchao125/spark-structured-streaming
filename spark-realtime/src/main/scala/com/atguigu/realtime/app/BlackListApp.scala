@@ -87,6 +87,7 @@ object BlackListApp {
             })
             .option("checkpointLocation", "C:/blacklist")
             .start()
+            .awaitTermination()
         
         // 4. 把过滤后的数据返回   在其他地方也可以使用临时表: tb_ads_info
         adsInfoDS
