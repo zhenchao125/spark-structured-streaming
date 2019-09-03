@@ -26,6 +26,7 @@ object AdsClickCountTopApp {
               |from tb_ads_info
               |group by dayString, area, adsId
             """.stripMargin)
+        
         df2.writeStream
             .format("console")
             .outputMode("update")
