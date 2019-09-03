@@ -15,7 +15,7 @@ object AdsClickCountTopApp {
     // 写入redis时的key的前缀   key: area:ads:top3:2019-03-22
     val keyPre = "area:ads:top3:"
     
-    def statAdsClickCountTop3(spark: SparkSession) = {
+    def statAdsClickCountTop3(spark: SparkSession): Unit = {
         val df2 = spark.sql(
             """
               |select
@@ -26,8 +26,12 @@ object AdsClickCountTopApp {
               |from tb_ads_info
               |group by dayString, area, adsId
             """.stripMargin)
-            
-         
+        df2.writeStream
+            .format("console")
+            .outputMode("update")
+            .start
+            .awaitTermination
+        
         
     }
 }
