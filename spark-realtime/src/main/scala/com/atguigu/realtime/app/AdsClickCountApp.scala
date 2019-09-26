@@ -48,7 +48,6 @@ object AdsClickCountApp {
                         if (fieldValueMap.nonEmpty) client.hmset(key, fieldValueMap)
                         client.close()
                     })
-                    
                     df.unpersist() // 释放缓存
                 }
             })
