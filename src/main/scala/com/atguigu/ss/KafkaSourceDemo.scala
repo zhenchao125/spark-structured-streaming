@@ -25,7 +25,7 @@ object KafkaSourceDemo {
         
         df.writeStream
             .outputMode("update")
-            .format("console")
+                        .format("console")
             .trigger(Trigger.Continuous(1000))
             .start
             .awaitTermination()

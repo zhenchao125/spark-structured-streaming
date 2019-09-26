@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spark-realtime</module>
+        <module>spark-realtime2</module>
     </modules>
 
     <dependencies>

@@ -37,7 +37,6 @@ object MockRealTime {
                 val userid = RandomNumUtil.randomInt(100, 105)
                 val adid = RandomNumUtil.randomInt(1, 5)
                 array += s"$timestamp,$area,$city,$userid,$adid"
-                Thread.sleep(10)
             }
         }
         array
